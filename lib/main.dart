@@ -38,27 +38,39 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final myFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('KBOYのFlutter大学'),
+        title: Text('KBOYのFlutter大学！！！'),
       ),
-      body: Center(
-        child: ElevatedButton(
-            child: Text('次へ'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NextPage("田村さん！")),
-              );
-            }
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          children: [
+            TextField(
+              autofocus: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'KBOYのFlutter大学',
+              ),
+              onChanged: (text){
+                print("First Text field: $text");
+              },
+            ),
+            TextField(
+              focusNode: myFocusNode,
+            ),
+            ElevatedButton(
+              child: Text("フォーカス！！！"),
+              onPressed: (){
+                myFocusNode.requestFocus();
+                },
+                )
+                ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
