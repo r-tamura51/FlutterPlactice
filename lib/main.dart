@@ -44,32 +44,25 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('KBOYのFlutter大学！！！'),
+        title: Text('KBOYのFlutter大学'),
       ),
       body: Container(
         width: double.infinity,
-        child: Column(
-          children: [
-            TextField(
-              autofocus: true,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'KBOYのFlutter大学',
-              ),
-              onChanged: (text){
-                print("First Text field: $text");
-              },
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.map),
+              title: Text('Map'),
             ),
-            TextField(
-              focusNode: myFocusNode,
+            ListTile(
+              leading: Icon(Icons.photo_album),
+              title: Text('Album'),
             ),
-            ElevatedButton(
-              child: Text("フォーカス！！！"),
-              onPressed: (){
-                myFocusNode.requestFocus();
-                },
-                )
-                ],
+            ListTile(
+              leading: Icon(Icons.phone),
+              title: Text('Phone'),
+            ),
+          ],
         ),
       ),
     );
